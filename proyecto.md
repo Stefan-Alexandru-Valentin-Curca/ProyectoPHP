@@ -34,3 +34,36 @@
 </body>
 </html>
   ```
+## Codigo php 
+``` php
+<?php
+
+$nombre_log = $_POST["logs"];
+
+$ruta_log = "";
+
+if ($nombre_log == "error"){
+    $ruta_log= "C:/xampp2/apache/logs/error.log";
+} else if ($nombre_log == "access"){
+$ruta_log= "C:/xampp2/apache/logs/access.log";
+}
+else if ($nombre_log == "install"){
+    $ruta_log= "C:/xampp2/apache/logs/install.log";
+    }
+
+$fichero = fopen($ruta_log,"r");
+echo  "<textarea rows='30' cols='60'>";
+while (!feof($fichero))
+{
+    $linea = fgets($fichero);
+    echo $linea;
+    
+}
+fclose ($fichero);
+echo "</textarea>";
+
+
+?>
+```
+
+
